@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import {
   Button,
   Container,
-  Header,
   Icon,
   Menu,
   Responsive,
@@ -11,8 +10,9 @@ import {
   Sidebar,
   Visibility,
 } from "semantic-ui-react";
-import "./Nav.css";
 import { Link } from "react-router-dom";
+import styles from '../../page.module.scss'
+
 
 const getWidth = () => {
   const isSSR = typeof window === "undefined";
@@ -24,7 +24,7 @@ class DesktopContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoggedIn: false,
+      isLoggedIn: true,
       activeItem: "home",
     };
   }
@@ -99,22 +99,32 @@ class DesktopContainer extends Component {
                     <Button as="a" inverted={!fixed}>
                       Logout
                     </Button>
+                    <Button
+                      as="a"
+                      inverted={!fixed}
+                      primary={fixed}
+                      className={styles.button}
+                      style={{
+                        marginLeft: "0.5em",
+                        backgroundColor: "#2185d0",
+                      }}>
+                      Donate
+                    </Button>
                   </Menu.Item>
                 ) : (
                   <Menu.Item position="right">
                     <Button as="a" inverted={!fixed}>
-                      {" "}
                       Login
                     </Button>
                     <Button
                       as="a"
                       inverted={!fixed}
                       primary={fixed}
+                      className={styles.button}
                       style={{
                         marginLeft: "0.5em",
                         backgroundColor: "#2185d0",
-                      }}
-                    >
+                      }}>
                       Donate
                     </Button>
                   </Menu.Item>
@@ -138,7 +148,7 @@ class MobileContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoggedIn: false,
+      isLoggedIn: true,
       activeItem: "home",
     };
   }
@@ -228,12 +238,15 @@ class MobileContainer extends Component {
                 {this.state.isLoggedIn ? (
                   <Menu.Item position="right">
                     <Button as="a">Logout</Button>
+                    <Button as="a" style={{ marginLeft: "0.5em" }}>
+                      Donate
+                    </Button>
                   </Menu.Item>
                 ) : (
                   <Menu.Item position="right">
                     <Button as="a"> Login</Button>
                     <Button as="a" style={{ marginLeft: "0.5em" }}>
-                      Register
+                      Donate
                     </Button>
                   </Menu.Item>
                 )}

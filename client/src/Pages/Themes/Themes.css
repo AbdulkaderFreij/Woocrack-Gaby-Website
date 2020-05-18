@@ -1,0 +1,91 @@
+ 
+
+
+/* Declare some variables */
+/* Define Styles */
+.current-page {
+    font-size: 1.5rem;
+    vertical-align: middle; }
+.switch-button {
+    padding: 10px 20px;
+    background: transparent;
+    border-radius: 15px;
+    margin: 20px;
+}
+/* Override some Bootstrap pagination styles */
+ul.pagination {
+    margin-top: 0;
+    margin-bottom: 0;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); }
+ul.pagination li.page-item.active a.page-link {
+    color: #445565 !important;
+    background-color: #e3e7eb !important;
+    border-color: #ced4da !important; }
+ul.pagination a.page-link {
+    padding: 0.75rem 1rem;
+    min-width: 3.5rem;
+    text-align: center;
+    box-shadow: none !important;
+    border-color: #ced4da !important;
+    color: #6b88a4;
+    font-weight: 900;
+    font-size: 1rem; }
+ul.pagination a.page-link:hover {
+    background-color: #f4f4f4; }
+
+.all-items {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 40px;
+    width: 100%;
+
+}
+.item-card__title {
+    background: red;
+    display: block;
+    width: 100%;
+    opacity: 1;
+    color: white;
+}
+.item-card__title h2 {
+    display: block;
+    text-align: center;
+}
+.item-card {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    height: 300px;
+}
+.item_card__content {
+    display: none;
+}
+.item-card:hover .item_card__content {
+     display: block;
+    background: yellow;
+ }
+.item_card__content a {
+    display: inline-block;
+    padding: 20px 10px;
+    margin: 10px;
+    background: #6b88a4;
+    border-radius: 30%;
+    border: 2px solid red;
+    cursor: pointer;
+}
+
+.ads-blocked {
+    background: red;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    height: 200px;
+    font-size: 46px;
+    margin: auto;
+}
+.ads-blocked > * {
+    padding-left: 100px;
+    padding-right: 100px;
+    color: white;
+
+}

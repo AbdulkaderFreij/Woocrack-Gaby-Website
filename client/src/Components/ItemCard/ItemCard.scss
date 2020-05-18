@@ -1,0 +1,12 @@
+.item-modal {
+  position: fixed;
+  top: 20px;
+  left: 15%;
+  right: 15%;
+  padding: 40px;
+  margin: auto;
+  background: red;
+  z-index: 1000;
+  bottom: 20px;
+  overflow-y: scroll;
+}

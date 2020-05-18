@@ -9,7 +9,10 @@ import {
   Icon,
   Segment,
 } from 'semantic-ui-react';
-import PropTypes from 'prop-types'
+import {Link} from "react-router-dom";
+import PropTypes from 'prop-types';
+import image1 from '../../images/abandoned-forest-industry-nature-34950.jpg';
+import image2 from '../../images/avatar.png';
 
 
 const HomepageHeading = ({ mobile }) => (
@@ -72,7 +75,7 @@ const Home = () => (
               </p>
             </Grid.Column>
             <Grid.Column floated='right' width={6}>
-              <Image bordered rounded size='large' src='/images/wireframe/white-image.png' />
+              <Image bordered rounded size='large' src={image1} />
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
@@ -97,7 +100,7 @@ const Home = () => (
                 "I shouldn't have gone with their competitor."
               </Header>
               <p style={{ fontSize: '1.33em' }}>
-                <Image avatar src='/images/avatar/large/nan.jpg' />
+                <Image avatar src={image2} />
                 <b>Nan</b> Chief Fun Officer Acme Toys
               </p>
             </Grid.Column>
@@ -125,7 +128,7 @@ const Home = () => (
             horizontal
             style={{ margin: '3em 0em', textTransform: 'uppercase' }}
           >
-            <a href='#'>Case Studies</a>
+            <Link to='#'>Case Studies</Link>
           </Divider>
   
           <Header as='h3' style={{ fontSize: '2em' }}>
