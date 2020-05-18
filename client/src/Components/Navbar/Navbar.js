@@ -8,15 +8,13 @@ import {
   Responsive,
   Segment,
   Sidebar,
-  Visibility,
+  Visibility
 } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import styles from '../../page.module.scss'
 
-
 const getWidth = () => {
   const isSSR = typeof window === "undefined";
-
   return isSSR ? Responsive.onlyTablet.minWidth : window.innerWidth;
 };
 
@@ -62,7 +60,7 @@ class DesktopContainer extends Component {
                   as={Link}
                   to="/"
                   name="home"
-                  active={activeItem === "home"}
+                  active={activeItem === "home" ||  activeItem==="logo"}
                   onClick={this.handleItemClick}
                 >
                   Home
@@ -84,6 +82,15 @@ class DesktopContainer extends Component {
                   onClick={this.handleItemClick}
                 >
                   Plugins
+                </Menu.Item>
+                <Menu.Item
+                  as={Link}
+                  to="/about"
+                  name="about"
+                  active={activeItem === "about"}
+                  onClick={this.handleItemClick}
+                >
+                  About
                 </Menu.Item>
                 <Menu.Item
                   as={Link}
@@ -238,7 +245,7 @@ class MobileContainer extends Component {
                 {this.state.isLoggedIn ? (
                   <Menu.Item position="right">
                     <Button as="a">Logout</Button>
-                    <Button as="a" style={{ marginLeft: "0.5em" }}>
+                                        <Button as="a" style={{ marginLeft: "0.5em" }}>
                       Donate
                     </Button>
                   </Menu.Item>

@@ -1,19 +1,9 @@
 import React from 'react'
-import {
-  Button,
-  Container,
-  Divider,
-  Grid,
-  Header,
-  Image,
-  Icon,
-  Segment,
-} from 'semantic-ui-react';
+import {Button, Container, Divider, Grid, Header, Image, Icon, Segment} from 'semantic-ui-react';
 import {Link} from "react-router-dom";
 import PropTypes from 'prop-types';
 import image1 from '../../images/abandoned-forest-industry-nature-34950.jpg';
 import image2 from '../../images/avatar.png';
-
 
 const HomepageHeading = ({ mobile }) => (
     <Container text>
@@ -130,7 +120,6 @@ const Home = () => (
           >
             <Link to='#'>Case Studies</Link>
           </Divider>
-  
           <Header as='h3' style={{ fontSize: '2em' }}>
             Did We Tell You About Our Bananas?
           </Header>
@@ -144,8 +133,6 @@ const Home = () => (
           </Button>
         </Container>
       </Segment>
-  
-      
     </>
   )
   

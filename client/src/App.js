@@ -7,7 +7,7 @@ import ContactUs from './Pages/ContactUs/ContactUs';
 import Navbar from './Components/Navbar/Navbar';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Footer from './Components/Footer/Footer';
-
+import About from './Pages/About/About';
 class App extends Component {
   render() {
     return (
@@ -21,6 +21,7 @@ class App extends Component {
                 <Route path="/themes" strict exact component={Themes} />
                 <Route path="/plugins" strict exact component={Plugins} />
                 <Route path="/contactus" strict exact component={ContactUs} />
+                <Route path="/about" strict exact component={About} />
                 <Footer/>
               </div>
             </Route>

@@ -4,12 +4,7 @@ import { checkAdBlocker } from '../../utils'
 import FilterModel from '../../Components/FilterModal/FilterModal'
 import Pagination from '../../Components/Pagination/Pagination';
 import ItemCard from '../../Components/ItemCard/ItemCard';
-import ReactCardFlip from 'react-card-flip';
-
-
 import data from '../../data.json'
-
-
 import './Themes.css';
 
 let years = [];
@@ -136,55 +131,6 @@ class Themes extends React.Component {
     this.setState({currentPage, currentItems, totalPages, resetPagination: false});
   }
   
-  handleSwitchToThemes = (event) => {
-    event.preventDefault();
-    const {active} = this.state;
-    if (active === 'themes') {
-      return;
-    }
-    
-    this.setState({
-      ...this.state,
-      totalPages: null,
-      currentPage: null,
-      allItems: original_themes,
-      currentItems: [],
-      active: 'themes',
-      resetPagination: true,
-      filters: {
-        ...this.state.filters,
-        search_query: '',
-        selectedYear: -1,
-        tags: [],
-      },
-      
-    })
-  }
-  
-  handleSwitchToPlugins = (event) => {
-    event.preventDefault();
-    const {active} = this.state;
-    if (active === 'plugins') {
-      return;
-    }
-    
-    this.setState({
-      ...this.state,
-      totalPages: null,
-      currentPage: null,
-      allItems: original_plugins,
-      currentItems: [],
-      active: 'plugins',
-      resetPagination: true,
-      filters: {
-        ...this.state.filters,
-        search_query: '',
-        selectedYear: -1,
-        tags: [],
-      },
-    })
-  }
-  
   handleReset = () => {
     this.setState({
       resetPagination: false,
@@ -267,43 +213,28 @@ class Themes extends React.Component {
                                        hideFilterModel={this.hideFilterModel}/> : null
           }
           <div className="row d-flex flex-row py-5">
-            {
-              active === 'themes' ?
-                  <button className="switch-button" onClick={this.handleSwitchToPlugins}>Switch to plugins</button> :
-                  <button className="switch-button" onClick={this.handleSwitchToThemes}>Switch to themes</button>
-            }
-            
-            <button className="switch-button" onClick={this.showFilterModel}>Filter</button>
-          
-          
+            <button className="switch-button" onClick={this.showFilterModel}>Filter</button>          
           </div>
           <div className="row d-flex flex-row py-5">
-            
             <div className="w-100 px-4 py-5 d-flex flex-row flex-wrap align-items-center justify-content-between">
               <div className="d-flex flex-row align-items-center">
-                
                 <h2 className={headerClass}>
                   <strong className="text-secondary">{totalItems}</strong> Items
                 </h2>
-                
                 {currentPage && (
                     <span className="current-page d-inline-block h-100 pl-4 text-secondary">
                   Page <span className="font-weight-bold">{currentPage}</span> / <span
                         className="font-weight-bold">{totalPages}</span>
                 </span>
                 )}
-              
               </div>
-              
               <div className="d-flex flex-row py-4 align-items-center">
-                
                 {
                   allItems.length > 0 ? <Pagination totalRecords={totalItems} pageLimit={18} pageNeighbours={4}
                                                     resetPagination={resetPagination}
                                                     handleReset={this.handleReset}
                                                     onPageChanged={this.onPageChanged}/> : null
                 }
-              
               </div>
             </div>
             
