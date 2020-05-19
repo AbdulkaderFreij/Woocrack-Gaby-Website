@@ -22,7 +22,7 @@ class DesktopContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoggedIn: true,
+      isLoggedIn: false,
       activeItem: "home",
     };
   }
@@ -37,11 +37,7 @@ class DesktopContainer extends Component {
     const { activeItem } = this.state;
     return (
       <Responsive getWidth={getWidth} minWidth={Responsive.onlyTablet.minWidth}>
-        <Visibility
-          once={false}
-          onBottomPassed={this.showFixedMenu}
-          onBottomPassedReverse={this.hideFixedMenu}
-        >
+        <Visibility once={false} onBottomPassed={this.showFixedMenu} onBottomPassedReverse={this.hideFixedMenu}>
           <Segment
             inverted
             textAlign="center"
@@ -85,15 +81,6 @@ class DesktopContainer extends Component {
                 </Menu.Item>
                 <Menu.Item
                   as={Link}
-                  to="/about"
-                  name="about"
-                  active={activeItem === "about"}
-                  onClick={this.handleItemClick}
-                >
-                  About
-                </Menu.Item>
-                <Menu.Item
-                  as={Link}
                   to="/contactus"
                   name="contactus"
                   active={activeItem === "contactus"}
@@ -107,7 +94,8 @@ class DesktopContainer extends Component {
                       Logout
                     </Button>
                     <Button
-                      as="a"
+                      as={Link}
+                      to="/donate"
                       inverted={!fixed}
                       primary={fixed}
                       className={styles.button}
@@ -120,11 +108,12 @@ class DesktopContainer extends Component {
                   </Menu.Item>
                 ) : (
                   <Menu.Item position="right">
-                    <Button as="a" inverted={!fixed}>
+                    <Button as={Link} to="/login" inverted={!fixed}>
                       Login
                     </Button>
                     <Button
-                      as="a"
+                      as={Link}
+                      to="/donate"
                       inverted={!fixed}
                       primary={fixed}
                       className={styles.button}
@@ -155,7 +144,7 @@ class MobileContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoggedIn: true,
+      isLoggedIn: false,
       activeItem: "home",
     };
   }
@@ -251,8 +240,8 @@ class MobileContainer extends Component {
                   </Menu.Item>
                 ) : (
                   <Menu.Item position="right">
-                    <Button as="a"> Login</Button>
-                    <Button as="a" style={{ marginLeft: "0.5em" }}>
+                    <Button as={Link} to="/login"> Login</Button>
+                    <Button as={Link} to="donate" style={{ marginLeft: "0.5em" }}>
                       Donate
                     </Button>
                   </Menu.Item>
