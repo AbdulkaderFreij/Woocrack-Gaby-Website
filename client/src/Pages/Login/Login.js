@@ -1,12 +1,12 @@
 import React from 'react'
-import { Button, Form, Grid, Header, Message, Segment,Image } from 'semantic-ui-react';
+import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
-import src from "../../images/big-ben-bridge-castle-city-460672.jpg"
+import styles from '../../page.module.scss'
+
 const Login = () => (
-  <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle' columns={2}>
-    <Grid.Column style={{ maxWidth: 450 }}><Image src={src} size='big'/></Grid.Column>
+  <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
     <Grid.Column style={{ maxWidth: 450 }}>
-      <Header as='h2' color='teal' textAlign='center'>
+      <Header as='h2' color='teal' textAlign='center' className={styles.loginheader}>
         Log-in to your account
       </Header>
       <Form size='large'>
@@ -20,7 +20,7 @@ const Login = () => (
             type='password'
           />
 
-          <Button color='teal' fluid size='large'>
+          <Button color='teal' fluid size='large' className={styles.loginbutton}>
             Login
           </Button>
         </Segment>
