@@ -249,6 +249,14 @@ class Themes extends React.Component {
               )
             }
           </div>
+          <div className="d-flex flex-row py-4 align-items-center">
+                {
+                  allItems.length > 0 ? <Pagination totalRecords={totalItems} pageLimit={18} pageNeighbours={4}
+                                                    resetPagination={resetPagination}
+                                                    handleReset={this.handleReset}
+                                                    onPageChanged={this.onPageChanged}/> : null
+                }
+              </div>
         </div>
     );
   }
