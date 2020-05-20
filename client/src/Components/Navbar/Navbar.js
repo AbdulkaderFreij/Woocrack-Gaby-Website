@@ -81,6 +81,24 @@ class DesktopContainer extends Component {
                 </Menu.Item>
                 <Menu.Item
                   as={Link}
+                  to="/membership"
+                  name="membership"
+                  active={activeItem === "membership"}
+                  onClick={this.handleItemClick}
+                >
+                  Membership
+                </Menu.Item>
+                <Menu.Item
+                  as={Link}
+                  to="/ngoform"
+                  name="ngoform"
+                  active={activeItem === "ngoform"}
+                  onClick={this.handleItemClick}
+                >
+                  NGO Form
+                </Menu.Item>
+                <Menu.Item
+                  as={Link}
                   to="/contactus"
                   name="contactus"
                   active={activeItem === "contactus"}
@@ -199,6 +217,24 @@ class MobileContainer extends Component {
             onClick={this.handleItemClick}
           >
             Plugins
+          </Menu.Item>
+          <Menu.Item
+            as={Link}
+            to="/membership"
+            name="membership"
+            active={activeItem === "membership"}
+            onClick={this.handleItemClick}
+          >
+            Membership
+          </Menu.Item>
+          <Menu.Item
+            as={Link}
+            to="/ngoform"
+            name="ngoform"
+            active={activeItem === "ngoform"}
+            onClick={this.handleItemClick}
+          >
+            NGO Form
           </Menu.Item>
           <Menu.Item
             as={Link}
