@@ -12,7 +12,8 @@ import Register from './Pages/Register/Register';
 import Membership from './Pages/Membership/Membership';
 import AdminNav from './Admin/Components/AdminNav/AdminNav';
 import Ngoform from './Pages/NGO Form/Ngoform';
-
+import AdminApp from './Admin/Components/AdminApp/AdminApp'
+import './App.css'
 class App extends Component {
   constructor(props){
     super(props)
@@ -25,7 +26,7 @@ class App extends Component {
     const pathname=this.props.location.pathname
     return (
         <div className="App">
-          {pathname === '/admin' ? <AdminNav/> : <Navbar/>}       
+          {/* {pathname === '/admin' ? <AdminNav/> : <Navbar/>}        */}
           <Switch>
             <Route path="/">
               <div className="app_container">
@@ -37,7 +38,10 @@ class App extends Component {
                 <Route path="/register" strict component={Register}/>
                 <Route path="/membership" strict exact component={Membership}/>
                 <Route path="/ngoform" strict exact component={Ngoform}/>
-                {pathname === '/admin' ? null : <Footer/>}       
+                <Route path='/admin'>
+                  <AdminApp/>
+                </Route>
+                {pathname !== '/admin' ? <Footer/> : null}  
               </div>
             </Route>
           </Switch>
