@@ -27,6 +27,7 @@ class App extends Component {
     return (
         <div className="App">
           {/* {pathname === '/admin' ? <AdminNav/> : <Navbar/>}        */}
+          <Navbar/>
           <Switch>
             <Route path="/">
               <div className="app_container">
@@ -38,10 +39,11 @@ class App extends Component {
                 <Route path="/register" strict component={Register}/>
                 <Route path="/membership" strict exact component={Membership}/>
                 <Route path="/ngoform" strict exact component={Ngoform}/>
+                <Footer/>
                 <Route path='/admin'>
                   <AdminApp/>
                 </Route>
-                {pathname !== '/admin' ? <Footer/> : null}  
+                {/* {pathname !== '/admin' ? <Footer/> : null}   */}
               </div>
             </Route>
           </Switch>
