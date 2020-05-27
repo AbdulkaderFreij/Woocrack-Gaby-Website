@@ -30,7 +30,7 @@ class AuthenticatedComponent extends Component {
                 <div><h1>Loading...</h1></div>
             )
         }
-        return (
+        else return (
             <div>
                 {this.props.children}
             </div>

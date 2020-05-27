@@ -92,6 +92,33 @@ app.get("/", (req,res)=>{
 })
 
 
+const checkAuth = (req, res, next) => {
+    try {
+      let token = '';
+      if (req.body.token) {
+        token = req.body.token;
+      } else if (req.query.token) {
+        token = req.query.token
+      }
+      const tokenDecodedData = jwt.verify(token, process.env.SECRET_OR_KEY);
+      console.log("token",tokenDecodedData)
+      next();
+    } catch (error) {
+      console.log(error.message)
+      res.json({
+        error: true,
+        data: error
+      });
+    }
+  }
+
+app.get('/verify', checkAuth, (req, res, next) => {
+
+    res.json({
+      status: 200,
+  
+    })
+  })
 
 app.get('/todos', (req, res)=>{
     knex.select().from('todos').then((todos)=>{
