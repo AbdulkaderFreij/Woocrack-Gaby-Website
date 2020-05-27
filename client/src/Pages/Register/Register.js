@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
 import styles from '../../page.module.scss';
 
-const Register = () => (
+class Register extends Component{
+  constructor(props){
+    super(props)
+    this.state={
+      user:"",
+      password:""
+    }
+  }
+  render(){
+    return(
   <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
     <Grid.Column style={{ maxWidth: 450 }}>
       <Header as='h2' color='teal' textAlign='center' className={styles.loginheader}>
@@ -26,5 +35,5 @@ const Register = () => (
     </Grid.Column>
   </Grid>
 )
-
-export default Register;
+  }}
+  export default Register;
