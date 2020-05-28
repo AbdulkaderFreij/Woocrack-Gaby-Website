@@ -4,6 +4,7 @@ import Packagew from "../../images/8531456_300x300.jpg";
 import Cardz from "../../Pages/Membership/Cardz"
 import styles from '../../page.module.scss'
 
+import './MembershipCard.scss';
 
 /*const GriDField = () => {
     for (let i = 0; i < 3; i++) {

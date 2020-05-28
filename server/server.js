@@ -12,10 +12,7 @@ app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended:false}));
 const knex_populate=require('knex-populate');
 
-<<<<<<< HEAD
-const PORT=5000;
 /******************  todo table  **************** */
-=======
 const passport = require('passport');
 const passportJWT = require('passport-jwt');
 const JwtStrategy = passportJWT.Strategy;
@@ -60,7 +57,7 @@ app.post('/seedUser', (req, res) => {
         email: email,
         password: password
     })
-
+    
     user.save().then(()=> {res.send('ok')})
 });
 
@@ -98,44 +95,43 @@ app.get("/", (req,res)=>{
 
 const checkAuth = (req, res, next) => {
     try {
-      let token = '';
-      if (req.body.token) {
-        token = req.body.token;
-      } else if (req.query.token) {
-        token = req.query.token
-      }
-      const tokenDecodedData = jwt.verify(token, process.env.SECRET_OR_KEY);
-      console.log("token",tokenDecodedData)
-      next();
+        let token = '';
+        if (req.body.token) {
+            token = req.body.token;
+        } else if (req.query.token) {
+            token = req.query.token
+        }
+        const tokenDecodedData = jwt.verify(token, process.env.SECRET_OR_KEY);
+        console.log("token",tokenDecodedData)
+        next();
     } catch (error) {
-      console.log(error.message)
-      res.json({
-        error: true,
-        data: error
-      });
+        console.log(error.message)
+        res.json({
+            error: true,
+            data: error
+        });
     }
-  }
+}
 
 app.get('/verify', checkAuth, (req, res, next) => {
-
+    
     res.json({
-      status: 200,
-  
+        status: 200,
+        
     })
-  })
+})
 
->>>>>>> a7d4643a9e14e7e2c1e99d2f8eee928343bb562f
 app.get('/todos', (req, res)=>{
     knex.select().from('todos').then((todos)=>{
         res.send(todos);
-    })   
+    })
 });
 
 app.get('/todos/:id', (req, res)=>{
     const id = req.params.id;
     knex.select().from('todos').where('id', id).then((todo)=>{
         res.send(todo);
-    }) 
+    })
 });
 
 app.post('/todos', (req,res)=>{
@@ -189,14 +185,14 @@ app.get('/test', (req, res, next)=>{
 app.get('/ngos', (req, res)=>{
     knex.select().from('ngos').then((ngos)=>{
         res.send(ngos);
-    })   
+    })
 });
 
 app.get('/ngos/:id', (req, res)=>{
     const id = req.params.id;
     knex.select().from('ngos').where('id', id).then((ngos)=>{
         res.send(ngos);
-    }) 
+    })
 });
 
 app.post('/ngos', (req,res)=>{
@@ -247,14 +243,14 @@ app.delete('/ngos/:id', (req,res)=>{
 app.get('/videos_tracking', (req, res)=>{
     knex.select().from('videos_tracking').then((videos_tracking)=>{
         res.send(videos_tracking);
-    })   
+    })
 });
 
 app.get('/videos_tracking/:id', (req, res)=>{
     const id = req.params.id;
     knex.select().from('videos_tracking').where('id', id).then((videos_tracking)=>{
         res.send(videos_tracking);
-    }) 
+    })
 });
 
 app.post('/videos_tracking', (req,res)=>{
@@ -299,14 +295,14 @@ app.delete('/videos_tracking/:id', (req,res)=>{
 app.get('/users', (req, res)=>{
     knex.select().from('users').then((users)=>{
         res.send(users);
-    })   
+    })
 });
 
 app.get('/users/:id', (req, res)=>{
     const id = req.params.id;
     knex.select().from('users').where('id', id).then((users)=>{
         res.send(users);
-    }) 
+    })
 });
 
 app.post('/users', (req,res)=>{
@@ -357,14 +353,14 @@ app.delete('/users/:id', (req,res)=>{
 app.get('/packages', (req, res)=>{
     knex.select().from('packages').then((packages)=>{
         res.send(packages);
-    })   
+    })
 });
 
 app.get('/packages/:id', (req, res)=>{
     const id = req.params.id;
     knex.select().from('packages').where('id', id).then((packages)=>{
         res.send(packages);
-    }) 
+    })
 });
 
 app.post('/packages', (req,res)=>{
@@ -411,14 +407,14 @@ app.delete('/packages/:id', (req,res)=>{
 app.get('/packages_users', (req, res)=>{
     knex.select().from('packages_users').then((users_packages)=>{
         res.send(users_packages);
-    })   
+    })
 });
 
 app.get('/packages_users/:id', (req, res)=>{
     const id = req.params.id;
     knex.select().from('packages_users').where('id', id).then((packages_users)=>{
         res.send(packages_users);
-    }) 
+    })
 });
 
 app.post('/packages_users', (req,res)=>{
@@ -466,14 +462,14 @@ app.delete('/packages_users/:id', (req,res)=>{
 app.get('/products', (req, res)=>{
     knex.select().from('products').then((products)=>{
         res.send(products);
-    })   
+    })
 });
 
 app.get('/products/:id', (req, res)=>{
     const id = req.params.id;
     knex.select().from('products').where('id', id).then((products)=>{
         res.send(products);
-    }) 
+    })
 });
 
 app.post('/products', (req,res)=>{
@@ -519,14 +515,14 @@ app.delete('/products/:id', (req,res)=>{
 app.get('/categories', (req, res)=>{
     knex.select().from('categories').then((categories)=>{
         res.send(categories);
-    })   
+    })
 });
 
 app.get('/categories/:id', (req, res)=>{
     const id = req.params.id;
     knex.select().from('categories').where('id', id).then((categories)=>{
         res.send(categories);
-    }) 
+    })
 });
 
 app.post('/categories', (req,res)=>{
@@ -570,14 +566,14 @@ app.delete('/categories/:id', (req,res)=>{
 app.get('/categories_products', (req, res)=>{
     knex.select().from('categories_products').then((categories_products)=>{
         res.send(categories_products);
-    })   
+    })
 });
 
 app.get('/categories_products/:id', (req, res)=>{
     const id = req.params.id;
     knex.select().from('categories_products').where('id', id).then((categories_products)=>{
         res.send(categories_products);
-    }) 
+    })
 });
 
 app.post('/categories_products', (req,res)=>{
@@ -623,14 +619,14 @@ app.delete('/categories_products/:id', (req,res)=>{
 app.get('/products_versions', (req, res)=>{
     knex.select().from('products_versions').then((products_versions)=>{
         res.send(products_versions);
-    })   
+    })
 });
 
 app.get('/products_versions/:id', (req, res)=>{
     const id = req.params.id;
     knex.select().from('products_versions').where('id', id).then((products_versions)=>{
         res.send(products_versions);
-    }) 
+    })
 });
 
 app.post('/products_versions', (req,res)=>{
