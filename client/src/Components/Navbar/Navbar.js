@@ -12,6 +12,7 @@ import {
 } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import styles from '../../page.module.scss'
+import axios from "axios";
 
 const getWidth = () => {
   const isSSR = typeof window === "undefined";
@@ -26,6 +27,22 @@ class DesktopContainer extends Component {
       activeItem: "home",
     };
   }
+
+	 componentDidMount() {
+	axios.get(`/verify?token=${localStorage.getItem('cool-jwt')}`).then(res=>{if (res.status === 200) {
+			this.setState({
+				isLoggedIn: true
+			})
+		}})
+
+
+	}
+
+    handleLogout() {
+      localStorage.removeItem('cool-jwt');
+      window.location.reload();
+      this.setState({isLoggedIn:false})
+    }
 
   hideFixedMenu = () => this.setState({ fixed: false });
   showFixedMenu = () => this.setState({ fixed: true });
@@ -108,7 +125,7 @@ class DesktopContainer extends Component {
                 </Menu.Item>
                 {this.state.isLoggedIn ? (
                   <Menu.Item position="right">
-                    <Button as="a" inverted={!fixed}>
+                    <Button as="a" inverted={!fixed} onClick={() => this.handleLogout()}>
                       Logout
                     </Button>
                     <Button
@@ -166,6 +183,23 @@ class MobileContainer extends Component {
       activeItem: "home",
     };
   }
+
+	async componentDidMount() {
+		const response = await fetch(`http://localhost:5000/verify?token=${localStorage.getItem('cool-jwt')}`);
+		const result = await response.json();
+		if (result.status === 200) {
+			this.setState({
+				isLoggedIn: true
+			})
+		}
+	}
+
+  handleLogout() {
+		localStorage.removeItem('cool-jwt');
+    window.location.reload();
+    this.setState({isLoggedIn:false})
+	}
+
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
   handleSidebarHide = () => this.setState({ sidebarOpened: false });
@@ -246,7 +280,7 @@ class MobileContainer extends Component {
             Contact Us
           </Menu.Item>
           {this.state.isLoggedIn ? (
-            <Menu.Item>Logout</Menu.Item>
+            <Menu.Item onClick={() => this.handleLogout()}>Logout</Menu.Item>
           ) : (
               <>
                 <Menu.Item>Login</Menu.Item>
@@ -269,8 +303,13 @@ class MobileContainer extends Component {
                 </Menu.Item>
                 {this.state.isLoggedIn ? (
                   <Menu.Item position="right">
+<<<<<<< HEAD
                     <Button as="a">Logout</Button>
                     <Button as="a" style={{ marginLeft: "0.5em" }}>
+=======
+                    <Button as="a" onClick={() => this.handleLogout()}>Logout</Button>
+                                        <Button as="a" style={{ marginLeft: "0.5em" }}>
+>>>>>>> 11fde11e3787a57b65aa4412489d5197bb548f0b
                       Donate
                     </Button>
                   </Menu.Item>

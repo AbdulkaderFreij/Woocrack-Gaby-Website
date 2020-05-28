@@ -14,6 +14,8 @@ import AdminNav from './Admin/Components/AdminNav/AdminNav';
 import Ngoform from './Pages/NGO Form/Ngoform';
 import AdminApp from './Admin/Components/AdminApp/AdminApp'
 import './App.css'
+import Protected from './Components/Protected/Protected';
+import AuthenticatedComponent from './Components/AthenticatedComponent/AuthenticatedComponent.js';
 class App extends Component {
   constructor(props){
     super(props)
@@ -39,6 +41,9 @@ class App extends Component {
                 <Route path="/register" strict component={Register}/>
                 <Route path="/membership" strict exact component={Membership}/>
                 <Route path="/ngoform" strict exact component={Ngoform}/>
+                <AuthenticatedComponent>
+                <Route path="/protected" strict exact component= {Protected}/>
+                </AuthenticatedComponent>
                 <Footer/>
                 <Route path='/admin'>
                   <AdminApp/>

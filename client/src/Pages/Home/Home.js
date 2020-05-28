@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 import PropTypes from 'prop-types';
 import image1 from '../../images/abandoned-forest-industry-nature-34950.jpg';
 import image2 from '../../images/avatar.png';
+import Member from "../Membership/Membership"
 
 const HomepageHeading = ({ mobile }) => (
     <Container text>
@@ -97,7 +98,6 @@ const Home = () => (
           </Grid.Row>
         </Grid>
       </Segment>
-  
       <Segment style={{ padding: '8em 0em' }} vertical>
         <Container text>
           <Header as='h3' style={{ fontSize: '2em' }}>
@@ -133,6 +133,7 @@ const Home = () => (
           </Button>
         </Container>
       </Segment>
+      <Member/>
     </>
   )
   
