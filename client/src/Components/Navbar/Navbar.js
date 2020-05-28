@@ -56,7 +56,7 @@ class DesktopContainer extends Component {
                   as={Link}
                   to="/"
                   name="home"
-                  active={activeItem === "home" ||  activeItem==="logo"}
+                  active={activeItem === "home" || activeItem === "logo"}
                   onClick={this.handleItemClick}
                 >
                   Home
@@ -125,24 +125,24 @@ class DesktopContainer extends Component {
                     </Button>
                   </Menu.Item>
                 ) : (
-                  <Menu.Item position="right">
-                    <Button as={Link} to="/login" inverted={!fixed}>
-                      Login
+                    <Menu.Item position="right">
+                      <Button as={Link} to="/login" inverted={!fixed}>
+                        Login
                     </Button>
-                    <Button
-                      as={Link}
-                      to="/donate"
-                      inverted={!fixed}
-                      primary={fixed}
-                      className={styles.button}
-                      style={{
-                        marginLeft: "0.5em",
-                        backgroundColor: "#2185d0",
-                      }}>
-                      Donate
+                      <Button
+                        as={Link}
+                        to="/donate"
+                        inverted={!fixed}
+                        primary={fixed}
+                        className={styles.button}
+                        style={{
+                          marginLeft: "0.5em",
+                          backgroundColor: "#2185d0",
+                        }}>
+                        Donate
                     </Button>
-                  </Menu.Item>
-                )}
+                    </Menu.Item>
+                  )}
               </Container>
             </Menu>
           </Segment>
@@ -248,11 +248,11 @@ class MobileContainer extends Component {
           {this.state.isLoggedIn ? (
             <Menu.Item>Logout</Menu.Item>
           ) : (
-            <>
-              <Menu.Item>Login</Menu.Item>
-              <Menu.Item>Register</Menu.Item>
-            </>
-          )}
+              <>
+                <Menu.Item>Login</Menu.Item>
+                <Menu.Item>Register</Menu.Item>
+              </>
+            )}
         </Sidebar>
 
         <Sidebar.Pusher dimmed={sidebarOpened}>
@@ -270,18 +270,18 @@ class MobileContainer extends Component {
                 {this.state.isLoggedIn ? (
                   <Menu.Item position="right">
                     <Button as="a">Logout</Button>
-                                        <Button as="a" style={{ marginLeft: "0.5em" }}>
+                    <Button as="a" style={{ marginLeft: "0.5em" }}>
                       Donate
                     </Button>
                   </Menu.Item>
                 ) : (
-                  <Menu.Item position="right">
-                    <Button as={Link} to="/login"> Login</Button>
-                    <Button as={Link} to="donate" style={{ marginLeft: "0.5em" }}>
-                      Donate
+                    <Menu.Item position="right">
+                      <Button as={Link} to="/login"> Login</Button>
+                      <Button as={Link} to="donate" style={{ marginLeft: "0.5em" }}>
+                        Donate
                     </Button>
-                  </Menu.Item>
-                )}
+                    </Menu.Item>
+                  )}
               </Menu>
             </Container>
           </Segment>
