@@ -303,13 +303,8 @@ class MobileContainer extends Component {
                 </Menu.Item>
                 {this.state.isLoggedIn ? (
                   <Menu.Item position="right">
-<<<<<<< HEAD
-                    <Button as="a">Logout</Button>
-                    <Button as="a" style={{ marginLeft: "0.5em" }}>
-=======
                     <Button as="a" onClick={() => this.handleLogout()}>Logout</Button>
-                                        <Button as="a" style={{ marginLeft: "0.5em" }}>
->>>>>>> 11fde11e3787a57b65aa4412489d5197bb548f0b
+                    <Button as="a" style={{ marginLeft: "0.5em" }}>
                       Donate
                     </Button>
                   </Menu.Item>
