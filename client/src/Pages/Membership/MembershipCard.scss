@@ -1,0 +1,51 @@
+.membership-card {
+  background-color: transparent;
+  perspective: 1000px;
+  height: 500px;/* Remove this if you don't want the 3D effect */
+  img {
+    width: 100%;
+  }
+
+  .car-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.5s;
+    transform-style: preserve-3d;
+  }
+
+  .front-content {
+    background-color: white;
+    color: black;
+  }
+  .back-content {
+
+    background-color: white;
+    color: white;
+    transform: rotateY(180deg);
+  }
+
+  .back-content, .front-content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+  }
+
+  &:hover {
+    .front-content {
+      transform: rotateY(180deg);
+      //display: none;
+    }
+
+    .back-content {
+      //display: block;
+    }
+
+    .car-inner {
+      transform: rotateY(180deg);
+    }
+  }
+}

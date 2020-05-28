@@ -9,7 +9,7 @@
         background-color: rgb(33, 133, 208);
     }
     .loginbutton:hover{
-        background-color:#1678c2;        
+        background-color:#1678c2;
         color:white;
     }
     .loginheader{
@@ -23,26 +23,26 @@
   -webkit-backface-visibility: hidden; /* Safari */
   backface-visibility: hidden;
     }
-        
+
     .card{
- 
+
         border-style: solid;
         border-width: 1px;
         border-color: gray;
         border-radius: 10px 10px 10px 10px ;
         background-color: transparent;
         perspective: 1000px
-        
+
     }
 
       .innerCard {
-          
+
       }
 
     .card:hover{
-            
-        background-color: greenyellow;
-         transform: rotateY(180deg);
+
+        //background-color: greenyellow;
+         //transform: rotateY(180deg);
       }
     .image{
 
@@ -50,4 +50,4 @@
 
     }
  }
- 
+
