@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import axios from "axios";
+
 import './App.css';
 import Home from './Pages/Home/Home';
 import Themes from './Pages/Themes/Themes';
@@ -20,16 +22,37 @@ class App extends Component {
   constructor(props){
     super(props)
     this.state={
-
+      isLoggedIn: false,
     }
   }
+
+
+  componentDidMount() {
+    axios
+      .get(`/verify?token=${localStorage.getItem("cool-jwt")}`)
+      .then((res) => {
+        debugger;
+        if (res.data.status === 200) {
+          this.setState({
+            isLoggedIn: true,
+          });
+        }
+      });
+  }
+
+  handleLogout() {
+    localStorage.removeItem("cool-jwt");
+    window.location.reload();
+    this.setState({ isLoggedIn: false });
+  }
+
   render() {
-    console.log("pathame",this.props.location.pathname)
-    const pathname=this.props.location.pathname
+    console.log("pathame", this.props.location.pathname)
+    const pathname = this.props.location.pathname
     return (
         <div className="App">
           {/* {pathname === '/admin' ? <AdminNav/> : <Navbar/>}        */}
-          <Navbar/>
+          <Navbar handleLogout={this.handleLogout} isLoggedIn={this.state.isLoggedIn} />
           <Switch>
             <Route path="/">
               <div className="app_container">
@@ -41,8 +64,8 @@ class App extends Component {
                 <Route path="/register" strict component={Register}/>
                 <Route path="/membership" strict exact component={Membership}/>
                 <Route path="/ngoform" strict exact component={Ngoform}/>
-                <AuthenticatedComponent>
-                <Route path="/protected" strict exact component= {Protected}/>
+                <AuthenticatedComponent isLoggedIn={this.state.isLoggedIn}>
+                <Route path="/protected" strict exact component={Protected}/>
                 </AuthenticatedComponent>
                 <Footer/>
                 <Route path='/admin'>

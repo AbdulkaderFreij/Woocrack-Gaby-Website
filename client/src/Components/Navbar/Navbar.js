@@ -8,11 +8,10 @@ import {
   Responsive,
   Segment,
   Sidebar,
-  Visibility
+  Visibility,
 } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-import styles from '../../page.module.scss'
-import axios from "axios";
+import styles from "../../page.module.scss";
 
 const getWidth = () => {
   const isSSR = typeof window === "undefined";
@@ -23,26 +22,9 @@ class DesktopContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoggedIn: false,
       activeItem: "home",
     };
   }
-
-	 componentDidMount() {
-	axios.get(`/verify?token=${localStorage.getItem('cool-jwt')}`).then(res=>{if (res.status === 200) {
-			this.setState({
-				isLoggedIn: true
-			})
-		}})
-
-
-	}
-
-    handleLogout() {
-      localStorage.removeItem('cool-jwt');
-      window.location.reload();
-      this.setState({isLoggedIn:false})
-    }
 
   hideFixedMenu = () => this.setState({ fixed: false });
   showFixedMenu = () => this.setState({ fixed: true });
@@ -54,7 +36,11 @@ class DesktopContainer extends Component {
     const { activeItem } = this.state;
     return (
       <Responsive getWidth={getWidth} minWidth={Responsive.onlyTablet.minWidth}>
-        <Visibility once={false} onBottomPassed={this.showFixedMenu} onBottomPassedReverse={this.hideFixedMenu}>
+        <Visibility
+          once={false}
+          onBottomPassed={this.showFixedMenu}
+          onBottomPassedReverse={this.hideFixedMenu}
+        >
           <Segment
             inverted
             textAlign="center"
@@ -123,9 +109,13 @@ class DesktopContainer extends Component {
                 >
                   Contact Us
                 </Menu.Item>
-                {this.state.isLoggedIn ? (
+                {this.props.isLoggedIn ? (
                   <Menu.Item position="right">
-                    <Button as="a" inverted={!fixed} onClick={() => this.handleLogout()}>
+                    <Button
+                      as="a"
+                      inverted={!fixed}
+                      onClick={() => this.props.handleLogout()}
+                    >
                       Logout
                     </Button>
                     <Button
@@ -137,29 +127,31 @@ class DesktopContainer extends Component {
                       style={{
                         marginLeft: "0.5em",
                         backgroundColor: "#2185d0",
-                      }}>
+                      }}
+                    >
                       Donate
                     </Button>
                   </Menu.Item>
                 ) : (
-                    <Menu.Item position="right">
-                      <Button as={Link} to="/login" inverted={!fixed}>
-                        Login
+                  <Menu.Item position="right">
+                    <Button as={Link} to="/login" inverted={!fixed}>
+                      Login
                     </Button>
-                      <Button
-                        as={Link}
-                        to="/donate"
-                        inverted={!fixed}
-                        primary={fixed}
-                        className={styles.button}
-                        style={{
-                          marginLeft: "0.5em",
-                          backgroundColor: "#2185d0",
-                        }}>
-                        Donate
+                    <Button
+                      as={Link}
+                      to="/donate"
+                      inverted={!fixed}
+                      primary={fixed}
+                      className={styles.button}
+                      style={{
+                        marginLeft: "0.5em",
+                        backgroundColor: "#2185d0",
+                      }}
+                    >
+                      Donate
                     </Button>
-                    </Menu.Item>
-                  )}
+                  </Menu.Item>
+                )}
               </Container>
             </Menu>
           </Segment>
@@ -179,26 +171,25 @@ class MobileContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoggedIn: false,
       activeItem: "home",
     };
   }
 
-	async componentDidMount() {
-		const response = await fetch(`http://localhost:5000/verify?token=${localStorage.getItem('cool-jwt')}`);
-		const result = await response.json();
-		if (result.status === 200) {
-			this.setState({
-				isLoggedIn: true
-			})
-		}
-	}
+  // async componentDidMount() {
+  // 	const response = await fetch(`http://localhost:5000/verify?token=${localStorage.getItem('cool-jwt')}`);
+  // 	const result = await response.json();
+  // 	if (result.status === 200) {
+  // 		this.setState({
+  // 			isLoggedIn: true
+  // 		})
+  // 	}
+  // }
 
-  handleLogout() {
-		localStorage.removeItem('cool-jwt');
-    window.location.reload();
-    this.setState({isLoggedIn:false})
-	}
+  // handleLogout() {
+  // 	localStorage.removeItem('cool-jwt');
+  //   window.location.reload();
+  //   this.setState({isLoggedIn:false})
+  // }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
@@ -279,14 +270,14 @@ class MobileContainer extends Component {
           >
             Contact Us
           </Menu.Item>
-          {this.state.isLoggedIn ? (
-            <Menu.Item onClick={() => this.handleLogout()}>Logout</Menu.Item>
+          {this.props.isLoggedIn ? (
+            <Menu.Item onClick={() => this.props.handleLogout()}>Logout</Menu.Item>
           ) : (
-              <>
-                <Menu.Item>Login</Menu.Item>
-                <Menu.Item>Register</Menu.Item>
-              </>
-            )}
+            <>
+              <Menu.Item>Login</Menu.Item>
+              <Menu.Item>Register</Menu.Item>
+            </>
+          )}
         </Sidebar>
 
         <Sidebar.Pusher dimmed={sidebarOpened}>
@@ -301,21 +292,30 @@ class MobileContainer extends Component {
                 <Menu.Item onClick={this.handleToggle}>
                   <Icon name="sidebar" />
                 </Menu.Item>
-                {this.state.isLoggedIn ? (
+                {this.props.isLoggedIn ? (
                   <Menu.Item position="right">
-                    <Button as="a" onClick={() => this.handleLogout()}>Logout</Button>
+                    <Button as="a" onClick={() => this.handleLogout()}>
+                      Logout
+                    </Button>
                     <Button as="a" style={{ marginLeft: "0.5em" }}>
                       Donate
                     </Button>
                   </Menu.Item>
                 ) : (
-                    <Menu.Item position="right">
-                      <Button as={Link} to="/login"> Login</Button>
-                      <Button as={Link} to="donate" style={{ marginLeft: "0.5em" }}>
-                        Donate
+                  <Menu.Item position="right">
+                    <Button as={Link} to="/login">
+                      {" "}
+                      Login
                     </Button>
-                    </Menu.Item>
-                  )}
+                    <Button
+                      as={Link}
+                      to="donate"
+                      style={{ marginLeft: "0.5em" }}
+                    >
+                      Donate
+                    </Button>
+                  </Menu.Item>
+                )}
               </Menu>
             </Container>
           </Segment>
@@ -331,10 +331,10 @@ MobileContainer.propTypes = {
   children: PropTypes.node,
 };
 
-const Navbar = ({ children }) => (
+const Navbar = ({ children , ...props}) => (
   <div>
-    <DesktopContainer>{children}</DesktopContainer>
-    <MobileContainer>{children}</MobileContainer>
+    <DesktopContainer {...props}>{children}</DesktopContainer>
+    <MobileContainer {...props}>{children}</MobileContainer>
   </div>
 );
 
